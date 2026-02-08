@@ -8,6 +8,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner( System.in);
 
+
+        System.out.println(" Welcome to Maxx's Boutique");
+
         System.out.println("Enter your name: ");
         String name = input.next();
 
@@ -16,6 +19,7 @@ public class Main {
 
         System.out.println("Enter coupon code: ");
         String code = input.next();
+
 
 
 

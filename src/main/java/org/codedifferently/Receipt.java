@@ -1,4 +1,6 @@
 package org.codedifferently;
 
-public class StringLogic  {
+public class Receipt {
+
+
 }
