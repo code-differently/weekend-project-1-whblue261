@@ -7,7 +7,7 @@ public class RandomGen {
 
 
 
-      public static int generateVisitId() {
+      public int generateVisitId() {
          return myRandom.nextInt(9000 + 1000);
 
       }
@@ -19,12 +19,12 @@ public class RandomGen {
          }
 
          public double stateTax() {
-            return myRandom.nextDouble(0.0, 0.011 );
+            return myRandom.nextDouble(0.005, 0.007 );
 
          }
 
           public double discountTotal() {
-             return myRandom.nextDouble(6.00, 15.00 );
+             return myRandom.nextDouble(1.00, 5.00 );
 
          }
 
