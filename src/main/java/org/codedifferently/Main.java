@@ -17,6 +17,7 @@ public class Main {
 
         System.out.println("Input budget: ");
         double budget = input.nextDouble();;
+        input.nextLine();
 
         System.out.println("Enter coupon code: ");
         String code = input.next();
@@ -32,19 +33,24 @@ public class Main {
         double subTotal = Calculations.subTotalBill(firstItem,secondItem,thirdItem);
         double taxTotal = Calculations.calculateTax(subTotal,stateTax);
         double total = Calculations.totalBeforeDiscount(subTotal, taxTotal);
+        discountAmt = Receipt.applyExtraCoupon(discountAmt,code);
 
         double  discountedTotal = Calculations.finalTotalBill(total,discountAmt);
         double roundedTotal = Calculations.roundedUp(discountedTotal);
 
-        Receipt.printReceipt(name,
+        Receipt.printReceipt(
+                name,
+                code,
                 idNumber,
+                discountAmt,
                 firstItem,
                 secondItem,
                 thirdItem,
                 subTotal,
                 taxTotal,
-                discountedTotal,
-                roundedTotal);
+                roundedTotal
+        );
+
         double remaining = budget - roundedTotal;
         if(remaining >= 0) {
             System.out.printf("You have $%.2f left in your budget.%n", remaining);
