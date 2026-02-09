@@ -3,28 +3,32 @@ package org.codedifferently;
 public class Calculations {
     public static double finalTotalBill;
 
-    RandomGen random = new RandomGen();
 
-    public double calculateTax(double amount){
 
-        return amount * random.stateTax();
+    public static double calculateTax(double subTotal, double stateTax ){
 
-    }
-
-    public double subTotalBill(double bill) {
-
-        return random.itemPrices() + random.itemPrices() + random.itemPrices();
+        return subTotal * stateTax;
 
     }
+    public static double totalBeforeDiscount( double subTotal, double taxTotal){
 
-    public double finalTotalBill(double bill, double taxAmt, double discount ){
-
-        return (bill + taxAmt) - discount;
+        return subTotal + taxTotal;
     }
 
-    public double roundedTotal(double finalTotalBill){
+    public static double subTotalBill (double firstItem, double secondItem, double thirdItem ) {
 
-        return Math.round(finalTotalBill*100)/100;
+        return firstItem + secondItem + thirdItem;
+    }
+
+    public static double finalTotalBill(double total, double discountAmt){
+
+        return total - discountAmt;
+    }
+
+    public static double roundedUp(double discountedTotal){
+
+        return Math.round(discountedTotal *100.0)/100.0;
+
     }
 
     }

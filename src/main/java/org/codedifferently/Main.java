@@ -1,5 +1,6 @@
 package org.codedifferently;
 
+import java.util.Random;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -20,8 +21,39 @@ public class Main {
         System.out.println("Enter coupon code: ");
         String code = input.next();
 
+        int idNumber = RandomGen.generateVisitId();
+        double stateTax = RandomGen.stateTax();
+        double discountAmt = RandomGen.discountTotal();
 
-        double finalTotal = Calculations.finalTotalBill;
+        double firstItem = RandomGen.itemPrice();
+        double secondItem = RandomGen.itemPrice();
+        double thirdItem = RandomGen.itemPrice();
+
+        double subTotal = Calculations.subTotalBill(firstItem,secondItem,thirdItem);
+        double taxTotal = Calculations.calculateTax(subTotal,stateTax);
+        double total = Calculations.totalBeforeDiscount(subTotal, taxTotal);
+
+        double  discountedTotal = Calculations.finalTotalBill(total,discountAmt);
+        double roundedTotal = Calculations.roundedUp(discountedTotal);
+
+        Receipt.printReceipt(name,
+                idNumber,
+                firstItem,
+                secondItem,
+                thirdItem,
+                subTotal,
+                taxTotal,
+                discountedTotal,
+                roundedTotal);
+        double remaining = budget - roundedTotal;
+        if(remaining >= 0) {
+            System.out.printf("You have $%.2f left in your budget.%n", remaining);
+        }
+        else {
+            System.out.printf("You are $%.2f over your budget!%n");
+
+        }
+        input.close();
 
 
 
